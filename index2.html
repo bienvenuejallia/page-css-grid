@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire To-Do List</title>
+  <style>
+    /* Style général */
+    body {
+      background-color: rgb(235, 195, 195);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      color: #111;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header, main, footer {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      background-color: whitesmoke;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffd6e7;
+      text-shadow: 1px 1px 3px #444;
+      margin: 0;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    legend {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      background-color: whitesmoke;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%236B7280' d='M5.5 7l4.5 4.5L14.5 7z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+      padding-right: 2.5rem;
+    }
+
+    input:focus-visible, textarea:focus-visible, select:focus-visible {
+      border-color: #ff92b1;
+      box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.4);
+      outline: none;
+      background-color: #fff0f5;
+    }
+
+    button {
+      width: 100%;
+      background-color: #ffd6e7;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover, button:focus-visible {
+      background-color: #ffb6c1;
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: black;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 1rem;
+      }
+
+      form {
+        padding: 1.5rem;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ajouter une tâche</h1>
+  </header>
+
+  <main>
+    <form action="#" method="post" aria-label="Formulaire pour ajouter une tâche à la To Do List">
+      <fieldset>
+        <legend>Détails de la tâche</legend>
+
+        <label for="titre">Titre :</label>
+        <input type="text" id="titre" name="titre" placeholder="Ex: Finir le projet de web" required>
+
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" rows="4" placeholder="Détails sur la tâche à réaliser..." required></textarea>
+
+        <label for="date">Date limite :</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="etat">Statut :</label>
+        <select id="etat" name="etat" required>
+          <option value="">-- Choisir --</option>
+          <option value="a faire">À faire</option>
+          <option value="en cours">En cours</option>
+          <option value="termine">Terminée</option>
+        </select>
+
+        <label for="priorite">Priorité :</label>
+        <select id="priorite" name="priorite" required>
+          <option value="">-- Choisir --</option>
+          <option value="urgente">Urgente</option>
+          <option value="importante">Importante</option>
+          <option value="normale">Normale</option>
+          <option value="basse">Peu prioritaire</option>
+        </select>
+
+        <label for="lieu">Lieu :</label>
+        <select id="lieu" name="lieu" required>
+          <option value="">-- Choisir --</option>
+          <option value="maison">Maison</option>
+          <option value="fac">Fac</option>
+          <option value="exterieur">Extérieur</option>
+        </select>
+
+        <label for="categorie">Catégorie :</label>
+        <select id="categorie" name="categorie" required>
+          <option value="">-- Choisir --</option>
+          <option value="universite">Université</option>
+          <option value="personnel">Personnel</option>
+          <option value="course">Course</option>
+        </select>
+
+        <button type="submit">Enregistrer</button>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; Projet ToDo List - Bienvenue Jallia - Avril 2025. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
